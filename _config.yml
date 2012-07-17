@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
+url: http://zimen.in
 title: My Octopress Blog
 subtitle: A blogging framework for hackers.
-author: Your Name
+author: Phil ying
 simple_search: http://google.com/search
 description:
 
