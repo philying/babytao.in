@@ -8,7 +8,7 @@ categories: iOS
 
 ###Books
 
-推荐几本书
+推荐几本iOS的书
 
 * [Addison Wesley - iPhone Developers Cookbook Second Edition (December 2009)](http://book.douban.com/subject/4090973/)
 * [Oreilly - Cocoa and Objective-C (2010)](http://book.douban.com/subject/4738788/)
