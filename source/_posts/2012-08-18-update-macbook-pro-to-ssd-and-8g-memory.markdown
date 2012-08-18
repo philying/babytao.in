@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2010年 Macbook pro 升级8GB内存和SSD"
+title: "2010年版Macbook pro 升级8GB内存和SSD"
 date: 2012-08-18 17:28
 comments: true
 categories: Mac
