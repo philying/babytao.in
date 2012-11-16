@@ -10,7 +10,7 @@ categories: Mac
 
 ###前期准备
 
-![准备](http://farm9.staticflickr.com/8287/7806812578_9bae9727da_z.jpg)
+![准备](http://farm9.staticflickr.com/8445/7806812110_33b49a26f0_z.jpg)
 
 * 内存：Samsang 三星 DDR3 1600 4GB * 2，175*2 （刚买完第二天跌至169，悲）
 * SSD：Samsung 三星 MZ-7PC128B/WW 128G SATA3 2.5英寸 SSD固态硬盘 749 （买完第二天涨到769，喜）
@@ -19,19 +19,17 @@ categories: Mac
 
 ###打开后盖
 
-![打开后盖](http://farm9.staticflickr.com/8299/7806811650_24700181d9_z.jpg)
+![打开后盖](http://farm9.staticflickr.com/8299/7806811650_5f36d13d6a_z.jpg)
 
 开后盖很顺利，网上教程很多，需要注意的是每个角的螺丝长短不一样，最好按照顺序摆好别装错了就行了
 
 ###先换内存
 
-![内存](http://farm8.staticflickr.com/7256/7808654432_5b9e9df6c9_o.png)
-
 扳开2个小耳朵，很顺利的卸下老内存，换上新内存，10分钟搞定，开机看了下已经认出来了，遗憾的是内存只能跑到1067 MHz，不过不影响使用。
 
 ###换硬盘
 
-![换好的硬盘](http://farm9.staticflickr.com/8291/7806810606_2b7f08fa12_z.jpg)
+![换好的硬盘](http://farm9.staticflickr.com/8291/7806810606_56760281af_z.jpg)
 
 这个有些坎坷了，光驱有个螺丝真心弄不下来，搞了半天想想算了，还是直接替换现在的硬盘吧，120G对我来说其实也够用了，图片和视频这种占空间的可以放在移动硬盘上。
 
