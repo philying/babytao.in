@@ -10,6 +10,8 @@ categories: iOS
 
 目前Xcode已经是4.4.1，SDK的版本是IOS5，虽然网上HelloWorld教程很多，那个斯坦福的教学视频也很不错，但是大多基于XCode3.*+SDK3.0，很多东西已经完全不一样了，创建项目也变了。
 
+<!--more-->
+
 打开XCode4.4
 
 ![xcode](http://farm9.staticflickr.com/8460/7969579324_50dbbec7a4_z.jpg)
@@ -77,8 +79,6 @@ categories: iOS
 点击运行（Command+r)，Hello World完成。
 
 ![运行](http://farm9.staticflickr.com/8460/7970047214_492049fb3f_m.jpg)
-
-
 
 
 
