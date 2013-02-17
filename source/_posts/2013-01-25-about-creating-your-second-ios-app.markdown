@@ -109,4 +109,30 @@ Xcode提供的Master-Detail模板使得创建类似的应用变得简单。
 
 注意：本教程暂时不使用编辑按钮
 
-在模拟器中，点击添加按钮（+）
+在模拟器中，点击添加按钮（+）可以在列表中添加一项（默认内容是当前日期和时间）。点击添加的项目会跳转到详情页。默认的详情页如下所示：
+
+<img src="http://developer.apple.com/library/ios/documentation/iPhone/Conceptual/SecondiOSAppTutorial/Art/default_detail_screen_2x.png" width="209.5" height="398.5">
+
+在详情页的坐上角可以看到一个返回按钮（Master），这个是master-detail模板的导航控制器自动创建的。点击按钮可以返回上一层屏幕。
+
+在下一节，你将使用storboard来实现更多的用户交互。现在先退出iOS模拟器。
+
+###在显示场景中检查Storyboard
+
+主要是描述一些场景的操作，比如放大缩小视图等，不详述。
+
+Master-detail默认的storyboard包括3个scence和2个segue。
+
+Scene 是由view controller控制的在屏幕上显示内容的区域。view controller是控制一系列屏幕显示的对象。（这里scene、view controller是一个意思）最左边的scene显示“navigation controller”，navigation controller。navigation controller又称为view controller容器，除了它本身以外，他还管理了一些别的view controller。比如：在BirdWatching app里面，除了你运行app时看到的导航栏和返回按钮，navigation controller还管理着master/detail view controller。
+
+Segue 表示了场景之间的过度方式（从源场景到目标场景）。比如：在默认项目里，master scene是源场景，detail scene是目标场景。当你测试app的时候，从master list点击某个项的时候会触发一个从源场景到目标场景的segue。在这个例子里，segue是一个push segue，这个segue的效果是目标场景会从屏幕右侧滑出覆盖源场景。push segue的图标如下所示：
+
+<img src="http://developer.apple.com/library/ios/documentation/iPhone/Conceptual/SecondiOSAppTutorial/Art/segue_icon_2x.png" width="27.5" height="27.5">
+
+当你在两个场景中创建segue后，你可以在他们之间传递数据。关于如何传递数据，可参考 "[Get the User's Input](http://developer.apple.com/library/ios/documentation/iPhone/Conceptual/SecondiOSAppTutorial/CreatingAddView/CreatingAddView.html#//apple_ref/doc/uid/TP40011318-CH6-SW4)"
+
+Relationship 是一种场景之间的连接类型。在这里，relationship和segue类似，图标如下所示：
+
+<img src="http://developer.apple.com/library/ios/documentation/iPhone/Conceptual/SecondiOSAppTutorial/Art/relationship_icon_2x.png" width="27.5" height="27.5">
+
+待续。
