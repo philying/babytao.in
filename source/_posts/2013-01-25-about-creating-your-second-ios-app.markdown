@@ -135,4 +135,99 @@ Relationship 是一种场景之间的连接类型。在这里，relationship和s
 
 <img src="http://developer.apple.com/library/ios/documentation/iPhone/Conceptual/SecondiOSAppTutorial/Art/relationship_icon_2x.png" width="27.5" height="27.5">
 
+本例的app运行的时候，navtion controller会自动加载master scene并在屏幕上方显示导航条。
+
+画布图形化的展示了每个场景的内容和关联关系，点击屏幕左下角的概览按钮可以打开概览面板查看详情。
+
+###总结
+
+在本章中，你使用Xcode创建了一个基于Master-Detail应用模板的iOS app。当你运行app时，你会发现它和其他的导航类iOS应用非常类似，比如Mail和Contacts。
+
+当你在画布里面打开storyboard，你了解了storyboard是怎么回事，并了解了他们最后展现出来的样子。
+
+#设计Model层
+
+每个app都是采用类似的方式处理数据。在本教程中，BirdWatching应用处理一个bird-sighting事件列表。遵循Mode-View-Controller（MVC）设计模式，你需要创建class来展示和管理数据。
+
+本章中，你要设计2个类。第一个是用于处理主要的单元数据。第二个创建并管理数据单元的实例。他们组成了app显示出来的列表内容，我们称之为BirdWatching app的Model层。
+
+注意：Master-Detail模板定义了一个含有默认内容的数组。在默认的app中点击Add按钮（+）来添加数据。在以后的步骤中，你将在你接下来创建的类中替换系统临时的内容。
+
+##确定数据单元并创建Data Object Class
+
+设计一个data object class，首先需要根据app的功能来确定哪些数据需要处理。比如：你可能会考虑要定义一个bird class和一个bird sighting class。但为了确保本教程尽量简单，你只要定义一个bird-sighting类包括所有属性，birdname，sighting location和date。
+
+创建BirdWatching应用可用的bird-sighting对象，你需要添加一个自定义class。bird-sighting类没什么复杂的功能（基本上就是一个简单的Objective-C对象），创建一个NSobject的子类即可。
+
+###创建bird-signting对象
+
+1. 在Xcode里，选择File > New > File (或者command-N)
+2. 在弹出的对话框中，在左边的对话框中选择Cocoa Touch in the iOS选项
+3. 选择Objective-C类并点击Next
+4. 在下一个对话框面板中，输入BirdSighting作为类的名字，在弹出的“Subclass of”菜单中选择NSObject，点击Next。按照惯例，由于data object class作为数据展示用所以一般以名词命名。
+5. 接下来选择BirdWatching目录：
+
+<img src="http://developer.apple.com/library/ios/documentation/iPhone/Conceptual/SecondiOSAppTutorial/Art/create_data_obj_files_2x.png" width="390" height="359">
+
+6. 点击Create
+
+Xcode会创建2个class，分别是BirdSighting.h和BirdSighting.m。默认情况下，Xcode在编辑区域中自动打开实现文件（BirdSighting.m）。
+
+BirdSighting类需要一种方式来保持3部分定义bird sighting的信息。
+
+首先，在头文件声明属性和自定义初始化方法。
+
+1. 选择BirdSighting.h
+2. 在@interface和@end中添加以下代码：
+
+``` c++ BirdSighting.h
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *location;
+@property (nonatomic, strong) NSDate *date;
+```
+3. 在这3个属性定义后面添加以下代码：
+
+``` c++ BirdSighting.h
+-(id)initWithName:(NSString *)name location:(NSString *)location date:(NSDate *)date;
+```
+
+实现自定义初始化方法
+
+1. 选择 BirdSighting.m
+   
+当BirdSighting.m在编辑器中打开时，Xcode会显示一个警告图标-在编辑器顶部的提示区域。在导航选择器点击警告图标可以看到警告信息。你会看到这样的显示：
+
+<img src="http://developer.apple.com/library/ios/documentation/iPhone/Conceptual/SecondiOSAppTutorial/Art/warning_icon_expanded_2x.png" width="260" height="104.5">
+
+在这里，Xcode提示你BirdSight类还没有实现头文件中定义的 initWithName方法。接下来你需要修复这个问题。
+
+2. 在@implementation和@end之间，输入initWithName方法，可以在弹出的代码提示中选择自动完成输入。
+3. 以下代码实现 initWithName方法
+
+``` c++ BirdSighting.m
+{
+    self = [super init];
+    if (self) {
+       _name = name;
+       _location = location;
+       _date = date;
+       return self;
+    }
+    return nil;
+}
+```
+
+当你完成所有的代码以后，警告信息也会随之消失
+
+注意，initWithName方法定义属性的时候使用了下划线开头（_name,_location,_date）。按照惯例，下划线打头的方法表明这些属性不应该被直接访问。在几乎你所有的代码中，你应该使用存取方法来访问对象的属性，比如self.name。只有2个地方你不应该使用存取方法，分别是initWithName和dealloc方法。
+
+理论上说，避免直接访问成员变量有利于更好的封装，实践中还有2点好处：
+
+* 一些Cocoa技术（尤其是key-value代码）依赖使用存取方法并切对存取方法有规定的命名。如果你不使用存取方法，你的app可能会错过一些Cocoa的特性。
+* 一些属性的值是在需要的时候才有的，如果你直接访问这些变量可能会返回nil或未初始化的值。（View controller就是一个例子）
+
+（如果你对此感兴趣，你可以阅读相关章节 “[Strong and Accessing Properties](http://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CocoaFundamentals/AddingBehaviortoaCocoaProgram/AddingBehaviorCocoa.html#//apple_ref/doc/uid/TP40002974-CH5-SW5)”）
+
+BirdSighting class是BirdWatching app的model层的一部分。你需要设计一个controller class来实例化BirdSighting对象。数据控制对象允许app的其他对象能够访问BirdSighting对象和master list，不需要关心数据是哪来的。接下来你需要来创建这个数据控制类。
+
 待续。
