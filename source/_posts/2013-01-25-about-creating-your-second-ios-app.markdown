@@ -191,6 +191,16 @@ BirdSighting类需要一种方式来保持3部分定义bird sighting的信息。
 -(id)initWithName:(NSString *)name location:(NSString *)location date:(NSDate *)date;
 ```
 
+关于变量声明的一些学习记录
+* 短线“-”表示这个是Objective-c方法的声明
+* 短线后面是方法的返回类型
+* 返回类型后面是函数名字
+* 无参数的函数后面不需要加括号和冒号，直接是函数名结束加分号，比如：-(void)displayDateinfo;
+* 有参数的后面加冒号和参数类型名字，比如：-(id)initWithName:(NSString *)name;//单个参数 -(void)setData:(int)param1 :(int)param2;//多个参数
+
+Objective-c中缀符的语法，方法的名称和参数都是在和在一起的：比如initWithName
+
+
 实现自定义初始化方法
 
 1. 选择 BirdSighting.m
@@ -229,5 +239,108 @@ BirdSighting类需要一种方式来保持3部分定义bird sighting的信息。
 （如果你对此感兴趣，你可以阅读相关章节 “[Strong and Accessing Properties](http://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CocoaFundamentals/AddingBehaviortoaCocoaProgram/AddingBehaviorCocoa.html#//apple_ref/doc/uid/TP40002974-CH5-SW5)”）
 
 BirdSighting class是BirdWatching app的model层的一部分。你需要设计一个controller class来实例化BirdSighting对象。数据控制对象允许app的其他对象能够访问BirdSighting对象和master list，不需要关心数据是哪来的。接下来你需要来创建这个数据控制类。
+
+##创建Data Controller Class
+
+Data controller class主要负责app数据的加载，保存和访问。虽然本例不访问文件也不保存数据，但仍然需要data controller创建BirdSighting对象并管理他们的集合。需要以下功能：
+
+* 创建一个保持所有BirdSighting对象的集合
+* 返回集合中BirdSighting对象的数量
+* 从集合中指定的位置返回BirdSighting对象
+* 通过用户输入来创建一个新的BirdSighting对象并添加到集合中
+
+创建data controller文件：
+
+1. 选择File > New > File (或者使用 Command-N)
+2. 在弹出的对话框中，在左侧的iOS选择区域Cocoa Touch
+3. 在对话框的主窗口中，选择Objective-c class，并点击Next
+4. 在下一个显示面板中，输入类的名称为 BirdSightingDataController，subclass框选择NSObject，并点击Next
+5. 在接下来的对话框中选择BirdWatching所在的目录并创建文件
+
+在本教程中，BirdSighting对象的集合用数组来表示。数组是一个按顺序排列对象的集合对象，并能够访问制定位置的对象。BirdWatching app允许用户在主列表里添加新的bird sighting。所以你需要一个可变长的数组对象。
+
+定义data controller的属性：
+
+1. 在编辑器中打开BirdSightingDataController.h
+2. 在@interface 和 @end之间添加以下代码
+
+``` c++ BirdSightingDataController.h
+@property (nonatomic, copy) NSMutableArray *masterBirdSightingList;
+```
+
+注意“copy”属性：指定应该使用对象的副本。稍后，在实现文件中，你将创建自定义的setter方法确保数组的副本也是不定长的。
+
+先别关闭头文件，还有方法声明文件没加。在本节开始的时候提到过，data controller有4个功能。其中三项是提供方法给别的对象来获取BirdSighting对象的信息或者添加新的对象到列表，但“创建master集合”是data controller对象需要关心的。因为这个方法不需要暴露给别的对象，所以你不需要在header文件里声明这个文件。
+
+添加三个访问数据的方法：
+
+1. 在BirdSightingDataController.h文件中添加以下方法声明代码：
+
+``` c++ BirdSightingDataController.h
+- (NSUInteger)countOfList;
+- (BirdSighting *)objectInListAtIndex:(NSUInteger)theIndex;
+- (void)addBirdSightingWithSighting:(BirdSighting *)sighting;
+```
+
+注意到objectInListAtIndex左边显示了一个红色的警告图标。Xcode提示“Expect a type”。这表示Xcode无法识别BirdSighting这个返回类型。解决这个问题，你需要添加一个“forward declation（前置声明）”，他向编译器声明项目中包含这个类的定义。
+
+2. 添加一个BirdSighting类的前置声明
+在#import 和 @interface之间添加以下代码
+
+``` c++ BirdSightingDataController.h
+@class BirdSighting;
+```
+刚才那个报错信息就消失了。
+
+头文件定义完了，接下来可以开始实现这些方法了，打开BirdSightingDataController.m你会发现Xcode会有一些错误提示信息，实现完头文件中定义的方法后，这些信息自然会消失。
+
+之前提到过，data controller需要创建一个master list并且显示一个默认项。创建一个init方法是实现它的一个好办法。
+
+实现list-creation方法
+
+1. 导入BirdSighting头文件，这样data controller就能够引用它定义的那些方法，@interface 声明如下：
+
+``` c++ BirdSightingDataController.h
+#import "BirdSighting.h"
+```
+
+2. 在@implementation声明前添加@interface声明来定义list-creation方法
+
+``` c++ BirdSightingDataController.h
+- (void)initializeDefaultDataList;
+``` 
+
+这个声明用于定义一个类的私有方法。
+
+3. 实现这个方法
+
+``` c++ BirdSightingDataController.h
+- (void)initializeDefaultDataList {
+    NSMutableArray *sightingList = [[NSMutableArray alloc] init];
+    self.masterBirdSightingList = sightingList;
+    BirdSighting *sighting;
+    NSDate *today = [NSDate date];
+    sighting = [[BirdSighting alloc] initWithName:@"Pigeon" location:@"Everywhere" date:today];
+    [self addBirdSightingWithSighting:sighting];
+}
+``` 
+
+initializeDefaultDataList方法做了下面这些事情：首先，它给sightingList赋了一个新的可变长数组。然后，它用一些默认的值来创建了一个BirdSighting对象并传递给之前定义的addBirdSightingWithSighting方法，这样就在主列表中添加了一项。
+
+虽然Xcode自动同步了accessor方法，你需要重写它的setter方法来确保新的数组是可变的。默认情况下，方法命名为setPropertyName（属性名字的首个字母大写）。你需要按照这种命名规范来命名accessor方法，否则accesor方法不会被调用。
+
+实现一个自定义的setter属性
+
+* 在BirdSightingDataController里添加一下代码
+
+``` c++ BirdSightingDataController.m
+- (void)setMasterBirdSightingList:(NSMutableArray *)newList {
+    if (_masterBirdSightingList != newList) {
+        _masterBirdSightingList = [newList mutableCopy];
+    }
+}
+``` 
+
+默认情况下，创建一个Objective-c类的时候Xcode不需要实现一个默认的init方法。因为大多数对象只需要执行[super init]。
 
 待续。
