@@ -27,6 +27,8 @@ categories: iOS
 
 想更好的学习本教程，你应该已经对iOS应用开发和Objective-C语言有一定的了解。如果你是个新手，在开始学习本教程之前，可以先阅读 [马上着手开发iOS应用程序](http://developer.apple.com/library/ios/#referencelibrary/GettingStarted/RoadMapiOSCh/chapters/Introduction.html#//apple_ref/doc/uid/TP40012668)。
 
+<!--more-->
+
 ##概览
 
 你的第二个iOS应用：Storyboards基于你在[第一个iOS应用](http://developer.apple.com/library/ios/#referencelibrary/GettingStarted/RoadMapiOSCh/chapters/RM_YourFirstApp_iOS/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40012668-TP40012323-CH1-SW1)积累的知识，这里将会想你介绍串联图（storyboards）提供的一些强大的功能以及一些table view的使用方法。
@@ -56,8 +58,6 @@ categories: iOS
 有很多方法来提高你的iOS应用开发技巧，教程最后还提供了一些学习新技巧的方法建议。
 
 相关章节：“问题排查”，“代码清单”，“下一步”
-
-<!--more-->
 
 #开始
 
@@ -342,5 +342,87 @@ initializeDefaultDataList方法做了下面这些事情：首先，它给sightin
 ``` 
 
 默认情况下，创建一个Objective-c类的时候Xcode不需要实现一个默认的init方法。因为大多数对象只需要执行[super init]。
+
+初始化data controller对象
+
+* 在@implementation区域输入以下代码
+
+``` c++ BirdSightingDataController.m
+- (id)init {
+    if (self = [super init]) {
+        [self initializeDefaultDataList];
+        return self;
+    }
+   return nil;
+}
+``` 
+
+这个方法给self赋予父类初始化返回的值。如果[super init]执行成功，这个方法会调之前定义的initializeDefaultDataList方法来初始化.
+
+现在data controller已经可以创建主列表，显示默认项并初始化自身实例。现在我们来实现头文件中定义的三个方法让其他对象能够和主列表交互。
+
+* countOfList
+* objectInListAtIndex:
+* addbirdSightingWithSighting:sight:
+
+实现data controller的数据访问方法：
+
+1. 实现countOfList方法
+
+``` c++ BirdSightingDataController.m
+- (NSUInteger)countOfList {
+    return [self.masterBirdSightingList count];
+}
+```
+
+count方法是NSArray的一个方法，返回数组的总数。因为masterBirdSightingList的类型是NSMutableArray，继承自NSArray，所以这个属性可以被调用到。
+
+2. 实现objectInListAtIndex:方法
+
+``` c++ BirdSightingDataController.m
+- (BirdSighting *)objectInListAtIndex:(NSUInteger)theIndex {
+    return [self.masterBirdSightingList objectAtIndex:theIndex];
+}
+```
+
+3. 实现addBirdSightingWithSighting:sighting：方法
+
+``` c++ BirdSightingDataController.m
+- (void)addBirdSightingWithSighting:(BirdSighting *)sighting {
+    [self.masterBirdSightingList addObject:sighting];
+}
+```
+
+这个方法通过传递用户输入的name和location信息给initWithName:location:date来创建并初始化了一个新的BirdSighting对象，使用当前时间。然后，这个方法添加新的BirdSighting对象到数组。
+
+代码写完后警告框就消失了。
+
+你现在也可以运行项目，但看上去和一开始没什么两样，因为view controller并不知道你实现的data model。在下一章中，你将编辑master view controller，这样你就可以开始来操作数据了。
+
+#设计主场景
+
+当你运行BirdWathcing app，第一个眼看到的就是bird sighting的主列表。本章中，你会设计master list的展现并实现master list对数据模型层的实现。
+
+##设计Master View Controller Scene
+
+在之前的教程中你已经些了很多代码了，现在是时候需要你在画布上做一些设计工作了。选择MainStoryboard.storyboard打开storyboard。
+
+iOS应用经常使用表哥视图来显示列表项，因为表格提供了一个有效的可自定义的方法来展现或大或小的数据。比如，Mail，Settings，Contacts。。在本章中，你会定义主场景的整体外观并设计表格行的样式。
+
+定义主场景的展示：
+
+1. 调整缩放级别（如果有必要的话）
+2. 双击导航条上的标题（现在是Master）并输入“Bird Sightings”
+3. 点击选择table view，你也可以在Birds Master View Controller面板选择
+4. 点击打开功能面板
+5. 在功能面板中点击属性按钮打开属性区域
+6. xxx
+
+2个常见的方法设计表格行（有时候叫单元行）：
+
+* 动态属性允许你设计一个单元并用它作为其他单元的模板。当你希望所有的单元外观统一就使用动态外观，而且你不能预知多少个单元会被展示
+* 静态单元允许你综合设计你的表格外观，包括单元的总数。外观维持不变，而且知道会展示什么信息的情况下使用静态单元
+
+为bird-sighting list设计一个属性单元
 
 待续。
