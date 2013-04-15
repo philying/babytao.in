@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "inline module in seajs"
+title: "inline moudles in Seajs"
 date: 2013-04-15 15:54
 comments: true
-categories:fontend 
+categories: frontend
 ---
 
 最近在项目中使用seajs管理js的模块，由于框架实现了js的合并和打包，因此有时候需要写一些inline模块，查了一圈文档没发现怎么写法，后来在一个google group里面找到了答案：
