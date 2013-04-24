@@ -16,4 +16,8 @@ categories: life
 
 ![换键帽](http://farm9.staticflickr.com/8390/8675037292_64763f605e.jpg)
 
+最终换成这个样子，这样就基本上符合Mac的布局了。
+
+![换键帽](http://farm9.staticflickr.com/8533/8675037118_7a56e256e5.jpg)
+
 Mac下的一些功能键还需要自定义，研究中。等熟悉了以后再搞点无刻的键帽玩玩。
