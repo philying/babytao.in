@@ -25,7 +25,7 @@ max-width: 100%;
 </div>
 <div style="float:left;width: 81.333%;margin-left:1%;margin-right:1%">
 <h3 style="font-size:20px;font-weight:bold;">About me…</h3>
-<h3 style="font-size:23px;font-weight:bold;"><a href="http://en.wikipedia.org/wiki/Geek" title="or am I?"><span style="color:#c41712">Geek</span></a> | <span style="color:#A9A39D">拖延症患者</span> | <a href="https://twitter.com/philying" class="twitter_link" title="Follow me on Twitter"><span style="color:#2EB8E7">Twitter</span></a> | <span style="color:#C53121">Github</span> | 爱 <span style="color:#471E67">Mac</span> | <a href="http://zimen.in" title="A blog framework for hackers" class="octopress_link"><span style="color:#E37907">Octopressor</span></a> | <a href="http://www.flickr.com/photos/philying/" class="flickr_link" title="I see the world with"><span style="color:#FB0071">Photo</span></a> | <span style="color:#1D00E5">前端工程师</span> </h3>
+<h3 style="font-size:23px;font-weight:bold;"><img src="http://designmodo.github.io/Flat-UI/images/illustrations/compass.png" width="80" height="80"> <a href="http://twitter.com/philying"><img src="http://designmodo.github.io/Flat-UI/images/illustrations/share.png" width="80" height="80" style="margin-left: 35px;"></a> <img src="http://designmodo.github.io/Flat-UI/images/illustrations/bag.png" width="80" height="80" style="margin-left: 35px;">  <img src="http://designmodo.github.io/Flat-UI/images/illustrations/mail.png" width="80" height="80" style="margin-left: 35px;"> <img src="http://designmodo.github.io/Flat-UI/images/demo/html-icon.png" width="70" height="70" style="margin-left: 35px;"></h3>
 <ul style="font-size:16px">
 <li>Email:philying#gmail.com</li>
 <li>Gtalk:philying#gmail.com</li>
