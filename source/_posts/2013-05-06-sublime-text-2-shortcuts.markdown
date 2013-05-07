@@ -3,7 +3,7 @@ layout: post
 title: "Sublime Text 2 快捷键"
 date: 2013-05-06 17:47
 comments: true
-categories: system
+categories: System
 ---
 
 ![sublimetext2](http://farm9.staticflickr.com/8409/8712753033_d953e9586f_o.png)
