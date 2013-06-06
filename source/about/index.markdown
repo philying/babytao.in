@@ -25,7 +25,7 @@ max-width: 100%;
 </div>
 <div style="float:left;width: 81.333%;margin-left:1%;margin-right:1%">
 <h3 style="font-size:20px;font-weight:bold;">About me…</h3>
-<h3 style="font-size:23px;font-weight:bold;"><img src="http://designmodo.github.io/Flat-UI/images/illustrations/compass.png" width="80" height="80"> <a href="http://twitter.com/philying"><img src="http://designmodo.github.io/Flat-UI/images/illustrations/share.png" width="80" height="80" style="margin-left: 35px;"></a> <img src="http://designmodo.github.io/Flat-UI/images/illustrations/bag.png" width="80" height="80" style="margin-left: 35px;">  <img src="http://designmodo.github.io/Flat-UI/images/illustrations/mail.png" width="80" height="80" style="margin-left: 35px;"> <img src="http://designmodo.github.io/Flat-UI/images/demo/html-icon.png" width="70" height="70" style="margin-left: 35px;"></h3>
+<h3 style="font-size:23px;font-weight:bold;"><img src="http://designmodo.github.io/Flat-UI/images/icons/Pocket@2x.png" width="80" height="80"> <a href="http://twitter.com/philying"><img src="http://designmodo.github.io/Flat-UI/images/icons/Chat@2x.png" width="80" height="80" style="margin-left: 35px;"></a> <img src="http://designmodo.github.io/Flat-UI/images/icons/Pocket@2x.png" width="80" height="80" style="margin-left: 35px;">  <img src="http://designmodo.github.io/Flat-UI/images/icons/Mail@2x.png" width="80" height="80" style="margin-left: 35px;"> <img src="http://designmodo.github.io/Flat-UI/images/demo/html-icon.png" width="70" height="70" style="margin-left: 35px;"></h3>
 <ul style="font-size:16px">
 <li>Email:philying#gmail.com</li>
 <li>Gtalk:philying#gmail.com</li>
