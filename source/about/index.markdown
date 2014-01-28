@@ -24,12 +24,15 @@ max-width: 100%;
 <img src="https://cn.gravatar.com/userimage/27554392/e655f8524c755b35078ddae1fd6d3f21.png?size=100" title="Lucifr's avatar" class="shadow-box" style="border-width:7px!important;" />
 </div>
 <div style="float:left;width: 81.333%;margin-left:1%;margin-right:1%">
-<div stylele="font-size:20px;margin:10px 0 10px 5px">Geek/Mac lover/web developer/body building/GYM</div>
-<ul style="font-size:16px">
-<li>Email:philying#gmail.com</li>
-<li>Gtalk:philying#gmail.com</li>
-<li>MSN:philying31#hotmail.com</li>
-<li>QQ:15349910</li>
-</ul>
+<div stylele="font-size:20px;margin:10px 0 10px 5px">Hi,I'm Phil Ying,a web developer/designer & team manager live in Shanghai,China.If you enjoy what I wrote,tweet me on twitter or dorp me a comment.I'd love to hear from you.<br><br>
+zimen.in
+<br><br>
+The site 'zimen.in' is a personal weblog,where I share my stories and ideas.It's completely static - using Jekyll generates every page to HTML file to make pages load real fast.By using Octopress 2.0,it really make writing blog much more funny.It's hosting on linode.All of the content on this site is made available at no charge.Please do not repost the entire content of any article without asking first.
+<br><br>
+contact<br><br>
+email:philying#gmail.com<br>
+gtalk:philying#gmail.com<br>
+qq:15349910
+</div>
 </div>
 </div>
